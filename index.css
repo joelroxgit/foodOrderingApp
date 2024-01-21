@@ -44,3 +44,11 @@
     margin: 10px;
     cursor: pointer;
 }
+
+.shimmer-container{
+    width: 30px;
+    background-color: aqua;
+}
+.shimmer-cards{
+    color: black;
+}

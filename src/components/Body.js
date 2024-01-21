@@ -1,24 +1,32 @@
 
 import { useState, useEffect } from "react"
 import RestaurantCard from "./RestaurantCard"
-import shimmer from './shimmer'
-import resList from "../utils/mockData"
+import resList from './../utils/mockData';
+import Shimmer from './Shimmer';
 const Body = () => {
 
-  let [resListdata, setresList] = useState([])
+  const [resListdata, setresList] = useState([])
   useEffect(() => {
     fetchData();
   }, []);
+  
+ 
 
   const fetchData = async () => {
+    
     const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING')
     const json = await data.json();
     
     const restaurants =  json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     setresList(restaurants)
-    console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
   }
+  if(resListdata.length=== 0){
+    return <Shimmer/>
+  }
+  console.log(Shimmer)
+
   return (
+
     <div className='body'>
       <div className="filter">
         <button className='filter-btn' onClick={() => {
