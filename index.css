@@ -46,9 +46,13 @@
 }
 
 .shimmer-container{
-    width: 30px;
-    background-color: aqua;
+    display: flex;
 }
 .shimmer-cards{
-    color: black;
+    width: 200px;
+    height: 400px;
+    background-color: #f0f0f0;
+}
+.loginbtn{
+    padding: 0 20px  ;
 }
