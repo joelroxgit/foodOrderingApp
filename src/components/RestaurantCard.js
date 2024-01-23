@@ -5,7 +5,7 @@ import { CLOUDINARY } from './../utils/constants';
 
   
 const RestaurantCard =(props)=>{
-    const {resdata} = props;
+    const {resdata} = props
 
     const {name,locality,avgRating ,cuisines,cloudinaryImageId
 

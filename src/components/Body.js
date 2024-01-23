@@ -5,7 +5,7 @@ import resList from './../utils/mockData';
 import Shimmer from './Shimmer';
 const Body = () => {
 
-  const [resListdata, setresList] = useState([])
+  const [resListdata, setresList] = useState([]);
   const [filteredres,setfilteredres] = useState([]);
   const [searchText,setSearchText] = useState("")
   useEffect(() => {
@@ -38,16 +38,17 @@ const Body = () => {
             setSearchText(e.target.value)
           }}/>
           <button onClick={()=>{
-              const filteredRestaurant = resListdata.filter(
+              const filteredRestaurant = filteredres.filter(
               (res)=> res.info.name.toLowerCase().includes(searchText.toLowerCase()) 
             )
-            setfilteredres(filteredRestaurant)
+             (filteredRestaurant)
 
           }}>Search
               </button>
         </div>
-        <button className='filter-btn' onClick={() => {
-          const filteredList = resListdata.filter((resdata) => resdata.avgRating > 4);
+        <button className='filter-btn' onClick={
+          () => {
+          const filteredList = filteredres.filter((res) =>res.info.avgRating > 4.3);
           setresList(filteredList)
         }}>
           Top Rated Restaurant
@@ -55,7 +56,7 @@ const Body = () => {
       </div>
       <div className='restro-container'>
         {
-          filteredres.map((data) =>
+          resListdata.map((data) =>
             <RestaurantCard key={data.id}
               resdata={data} />)
         }
