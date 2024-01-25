@@ -18,7 +18,7 @@ const Body = () => {
     
     const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING')
     const json = await data.json();
-    
+    console.log(json)
     const restaurants =  json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     const filter =  json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     setfilteredres(filter)
@@ -41,7 +41,7 @@ const Body = () => {
               const filteredRestaurant = resListdata.filter(
               (res)=> res.info.name.toLowerCase().includes(searchText.toLowerCase()) 
             )
-            setfilteredres(filteredRestaurant)
+            setresList(filteredRestaurant)
 
           }}>Search
               </button>
@@ -56,7 +56,7 @@ const Body = () => {
       <div className='restro-container'>
         {
           filteredres.map((data) =>
-            <RestaurantCard key={data.id}
+            <RestaurantCard key={data.info.id}
               resdata={data} />)
         }
       </div>
